@@ -1,0 +1,84 @@
+<app-banner title="INSCRIPTION"></app-banner>
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <form [formGroup]="inscriptionForm" >
+            <div class="form-group">
+              <h1 class="text-blue">INSCRIPTION</h1>
+              <input type="number" class="form-control" formControlName="tel"  placeholder="Telephone">
+            </div>
+            <div *ngIf="inscriptionForm.controls['tel'].invalid && (inscriptionForm.controls['tel'].touched ||
+            inscriptionForm.controls['tel'].dirty)">
+            <div *ngIf="inscriptionForm.controls['tel'].errors.required" class="red">
+              telephone is required
+            </div>
+            
+            <div *ngIf="inscriptionForm.controls['tel'].errors.maxlength" class="red">
+              telephone must have at most 8 chars
+            </div>
+
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" formControlName="pwd"  placeholder="Password">
+            </div>
+            <div *ngIf="inscriptionForm.controls['pwd'].invalid && (inscriptionForm.controls['pwd'].touched ||
+            inscriptionForm.controls['pwd'].dirty)">
+            <div *ngIf="inscriptionForm.controls['pwd'].errors.required" class="red">
+             password is required
+            </div>
+            <div *ngIf="snscriptionForm.controls['pwd'].errors.minlength">
+                password must have at least 6
+              </div>
+              <div *ngIf="nscriptionForm.controls['pwd'].errors.maxlength">
+                password must have at most 12 chars
+              </div>
+            </div>
+
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="nom"  placeholder="Entrer Nom">
+            </div>
+            <div *ngIf="inscriptionForm.controls['nom'].invalid && (inscriptionForm.controls['nom'].touched ||
+            inscriptionForm.controls['nom'].dirty)">
+            <div *ngIf="inscriptionForm.controls['nom'].errors.required" class="red">
+              Nom is required
+            </div>
+           
+            <div *ngIf="inscriptionForm.controls['nom'].errors.minlength" class="red">
+                Nom must have at least 3
+              </div>
+              <div *ngIf="inscriptionForm.controls['nom'].errors.maxlength" class="red">
+                Nom must have at most 5 chars
+              </div>
+
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="prenom"  placeholder="Entrer Prenom">
+              </div>
+              <div *ngIf="inscriptionForm.controls['prenom'].invalid && (nscriptionForm.controls['prenom'].touched ||
+              nscriptionForm.controls['prenom'].dirty)">
+            <div *ngIf="inscriptionForm.controls['prenom'].errors.required">
+              Prenom is required
+            </div>
+            <div *ngIf="inscriptionForm.controls['prenom'].errors.minlength">
+              prenom must have at least 3
+            </div>
+            <div *ngIf="inscriptionForm.controls['prenom'].errors.maxlength">
+             prenom must have at most 5 chars
+            </div>
+
+            </div>
+
+             
+            <div class="form-group">
+              <input (click)="inscription()" [disabled]="nscriptionForm.invalid" type="submit"  class="btn btn-primary py-3 px-5" value="S'INSCRIRE">
+            </div>
+          </form>   
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+

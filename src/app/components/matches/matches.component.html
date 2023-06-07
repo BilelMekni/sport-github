@@ -1,0 +1,5 @@
+<app-banner title="matches"></app-banner>
+<div *ngFor="let m of matches">
+   
+   <app-result [matchInput] = "m" (matchesToEmit)="updateMatches($event)"></app-result> 
+</div>

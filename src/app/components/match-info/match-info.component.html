@@ -1,0 +1,76 @@
+<app-banner title="Match N° {{id}} Information"></app-banner>
+<app-result [matchInput]="match"></app-result>
+
+
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <form [formGroup]="addCommentForm">
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="content"  placeholder="ENTRER TEXT">
+              </div>
+              <div *ngIf="addCommentForm.controls['content'].invalid && (addCommentForm.controls['content'].touched ||
+              addCommentForm.controls['content'].dirty)">
+            <div *ngIf="addCommentForm.controls['content'].errors.required" class="red">
+              Content is required
+            </div>
+            
+           
+
+            </div>
+              
+            
+            <div class="form-group">
+              <input type="submit" (click)="add()" class="btn btn-primary py-3 px-5" value="ADDCOMMENT">
+            </div>
+          </form>  
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <form #butteurForm="ngForm" (ngSubmit)="generatButteur()">
+            <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="match.scoreOne" [ngModelOptions]="{standalone: true}" placeholder="Name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" [(ngModel)]="match.teamOne" [ngModelOptions]="{standalone: true}" placeholder="Name">
+              </div>
+            
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary py-3 px-5" value="generatButteur">
+            </div>
+          </form>  
+        </div>
+        <div class="col-lg-6">
+            <form #countryForm="ngForm" (ngSubmit)="addCountry()">
+              <div class="form-group">
+                  <input type="text" class="form-control" [(ngModel)]="match.scoreTwo" [ngModelOptions]="{standalone: true}" placeholder="Name">
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" [(ngModel)]="match.teamTwo" [ngModelOptions]="{standalone: true}" placeholder="Name">
+                </div>
+              
+              <div class="form-group">
+                <input type="submit" class="btn btn-primary py-3 px-5" value="generatButteur">
+              </div>
+            </form>  
+          </div>
+       
+      </div>
+    </div>
+  </div>
+
+

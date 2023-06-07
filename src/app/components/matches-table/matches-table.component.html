@@ -1,0 +1,39 @@
+<form class="m-3 text-center" >
+    <div class="form-group">
+        <label for=""> TeamOne || TeamTwo</label>
+    <input type="text" class="form-control" [(ngModel)]="team" [ngModelOptions]="{standalone:true}">
+    </div>
+    {{team}}
+</form>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>ScoreOne</th>
+        <th>ScoreTwo</th>
+        <th>TeamOne</th>
+        <th>TeamTwo</th>
+        <th> Choix</th>
+        <th>Actions</th>
+
+    </tr>
+    <tr *ngFor="let m of pageOfItems | myFilter:team">
+        <td>{{m._id}}</td>
+        <td>{{m.scoreOne}}</td>
+        <td>{{m.scoreTwo}}</td>
+        <td>{{m.teamOne | asterix}}</td>
+        <td>{{m.teamTwo | reverse}}</td>
+        <td> <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input"></td>
+        <td><button type="button" class="btn btn-info"(click)="goToDisplay(m._id)" >Display</button></td>
+        <td><button type="button" class="btn btn-warning" (click)="goToEdit(m._id)">Edit</button></td>
+        <td><button type="button" class="btn btn-danger" (click)="deleteMatches(m._id)">Delete</button></td>
+
+    </tr>
+    <div class="text-center">
+        <button type="button" class="btn btn-danger" (click)="deleteAll(m._id)">DELETE All</button>
+      </div>
+      <div class="card-footer pb-0 pt-3">
+        <jw-pagination 
+       [items]="matches" [pageSize]="2" (changePage)="onChangePage($event)"></jw-pagination>
+       </div>
+
+</table>

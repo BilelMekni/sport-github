@@ -1,0 +1,27 @@
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Role</th>
+        <th>gender</th>
+        <th>Actions</th>
+    </tr>
+    <tr *ngFor="let u of users">
+        <td>{{u.id}}</td>
+        <td>{{u.gender | gender}}{{u.firstName}}</td>
+        <td>{{u.lastName}}</td>
+        <td>{{u.email}}</td>
+        <td>{{u.pwd}}</td>
+        <td>{{u.role}}</td>
+        <td>{{u.gender}}</td>
+        <td><button type="button" class="btn btn-info" >Display</button></td>
+        <td><button type="button" class="btn btn-warning">Edit</button></td>
+        <td><button type="button"  class="btn btn-danger" (click)="deleteUsers(u.id)">Delete</button></td>
+
+    </tr>
+
+</table>

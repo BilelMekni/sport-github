@@ -1,0 +1,28 @@
+
+
+<app-banner title="UPDATE"></app-banner>
+<table class="table">
+
+    <tr>
+        <th>ID</th>
+        <th>Telephone</th>
+        <th>Password</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        
+        <th>Actions</th>
+    </tr>
+    <tr *ngFor="let c of clients">
+        <td>{{c._id}}</td>
+        <td>{{c.telephone}}</td>
+        <td>{{c.password}}</td>
+        <td>{{c.nom}}</td>
+        <td>{{c.prenom}}</td>
+        
+   
+        <td><button type="button" class="btn btn-warning" (click)="updateClient(c._id)">Edit</button></td>
+
+    </tr>
+
+</table>
+

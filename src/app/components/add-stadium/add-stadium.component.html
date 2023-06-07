@@ -1,0 +1,74 @@
+<app-banner title="ADD STADIUM"></app-banner>
+
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form [formGroup]="staduimForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="name" placeholder="Name">
+                    </div>
+                    <div *ngIf="staduimForm.controls['name'].invalid && (staduimForm.controls['name'].touched ||
+              staduimForm.controls['name'].dirty)">
+                        <div *ngIf="staduimForm.controls['name'].errors.required" class="red">
+                            Name is required
+                        </div>
+                        <div *ngIf="staduimForm.controls['name'].errors.minlength" class="red">
+                            Name must have at least 3
+                        </div>
+                        <div *ngIf="staduimForm.controls['name'].errors.maxlength" class="red">
+                            Name must have at most 20 chars
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="capacity" placeholder="Capacity">
+                    </div>
+                    <div *ngIf="staduimForm.controls['capacity'].invalid && (staduimForm.controls['capacity'].touched ||
+              staduimForm.controls['capacity'].dirty)">
+                        <div *ngIf="staduimForm.controls['capacity'].errors.required" class="red">
+                            Capacity is required
+                        </div>
+                        
+                        
+                    </div>
+
+                    <div class="form-group">
+                        <select class="custom-select" formControlName="country" >
+                            <option selected>Country</option>
+                            <option value={{Country.name}} *ngFor="let Country of countries">{{Country.name}}</option>
+                            
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" (click)="addstaduim()" [disabled]="staduimForm.invalid"
+                            class="btn btn-primary py-3 px-5" value="Add-Staduim">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="row" *ngIf="staduims.length !=0">
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Capacity</th>
+                    <th>Country</th>
+                </tr>
+                <tr *ngFor="let s of staduims">
+                    <td>{{s.id}}</td>
+                    <td>{{s.name}}</td>
+                    <td>{{s.capacity}}</td>
+                    <td>{{s.country}}</td>
+                </tr>
+            </table>
+        </div>
+        <div *ngIf="staduims.length ==0">
+            <p class="text-center" style="font-size: 40px; color: red;">NO STADUIMS </p>
+
+        </div>
+    </div>
+</div>

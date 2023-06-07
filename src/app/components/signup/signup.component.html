@@ -1,0 +1,113 @@
+<app-banner title="SIGNUP"></app-banner>
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <form [formGroup]="signupForm" >
+            <div class="form-group">
+              <h1 class="text-blue">SIGNUP</h1>
+              <input type="text" class="form-control" formControlName="firstName"  placeholder="First Name">
+            </div>
+            <div *ngIf="signupForm.controls['firstName'].invalid && (signupForm.controls['firstName'].touched ||
+            signupForm.controls['firstName'].dirty)">
+            <div *ngIf="signupForm.controls['firstName'].errors.required" class="red">
+              first Name is required
+            </div>
+            <div *ngIf="signupForm.controls['firstName'].errors.minlength" class="red">
+              first Name must have at least 3
+            </div>
+            <div *ngIf="signupForm.controls['firstName'].errors.maxlength" class="red">
+              first Name must have at most 20 chars
+            </div>
+
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" formControlName="lastName"  placeholder="Last Name">
+            </div>
+            <div *ngIf="signupForm.controls['lastName'].invalid && (signupForm.controls['lastName'].touched ||
+            signupForm.controls['lastName'].dirty)">
+            <div *ngIf="signupForm.controls['lastName'].errors.required" class="red">
+              last Name is required
+            </div>
+            <div *ngIf="signupForm.controls['lastName'].errors.minlength" class="red">
+              last Name must have at least 5
+            </div>
+            <div *ngIf="signupForm.controls['lastName'].errors.maxlength" class="red">
+              last Name must have at most 15 chars
+            </div>
+
+            </div>
+
+            <div class="form-group">
+              <input type="email" class="form-control" formControlName="email"  placeholder="Email">
+            </div>
+            <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].touched ||
+            signupForm.controls['email'].dirty)">
+            <div *ngIf="signupForm.controls['email'].errors.required" class="red">
+              Email is required
+            </div>
+            <div *ngIf="signupForm.controls['email'].errors.email" class="red">
+              Format email invalid
+            </div>
+           
+
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control" formControlName="pwd"  placeholder="Password">
+              </div>
+              <div *ngIf="signupForm.controls['pwd'].invalid && (signupForm.controls['pwd'].touched ||
+            signupForm.controls['pwd'].dirty)">
+            <div *ngIf="signupForm.controls['pwd'].errors.required">
+              password is required
+            </div>
+            <div *ngIf="signupForm.controls['pwd'].errors.minlength">
+              password must have at least 6
+            </div>
+            <div *ngIf="signupForm.controls['pwd'].errors.maxlength">
+              password must have at most 12 chars
+            </div>
+
+            </div>
+
+              <div class="form-group">
+                <input type="password" class="form-control" formControlName="confirmPwd"  placeholder="Confirme Password">
+              </div>
+              <div *ngIf="signupForm.controls['confirmPwd'].invalid && (signupForm.controls['confirmPwd'].dirty||
+              signupForm.controls['confirmPwd'].touched)">
+                <div *ngIf="signupForm.controls['confirmPwd'].errors.confirmError" class="red" >
+                     Confirm Pwd does not match PWD.
+                </div>
+              </div>
+                  <p>Gender</p>
+              <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio1" name="gender" value="0" formControlName="gender" class="custom-control-input">
+                <label class="custom-control-label"  for="customRadio1">Man</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio2" name="gender" value="1" formControlName="gender" class="custom-control-input">
+                <label class="custom-control-label"  for="customRadio2">Woman</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input type="radio" id="customRadio2" name="gender" value="-1" formControlName="gender" class="custom-control-input">
+                <label class="custom-control-label"  for="customRadio2">Other</label>
+              </div>
+              <div class="form-group" style="visibility: hidden;">
+                <input type="file" class="form-control" #filePicker (change)="onImageSelected($event)">
+              </div>
+              <div class="text-center">
+               <button class="btn btn-info" (click)="filePicker.click()">Please select your avatar</button>
+              <br>
+              <img [src]="imagePreview" *ngIf="imagePreview"
+              class="pt-3 pb-3" width="200px" height="200px" alt="">
+            </div>
+            <div class="form-group">
+              <input (click)="signup()" [disabled]="signupForm.invalid" type="submit"  class="btn btn-primary py-3 px-5" value="SIGNUP">
+            </div>
+          </form>   
+        </div>
+       
+      </div>
+    </div>
+  </div>
+

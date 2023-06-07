@@ -1,0 +1,8 @@
+<app-banner title="All Players"></app-banner>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let p of playersTab" class="col-lg-4">
+            <app-player [playerInput]="p"></app-player>
+        </div>
+    </div>
+</div>

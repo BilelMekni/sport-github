@@ -1,0 +1,47 @@
+<app-banner title="LOGIN"></app-banner>
+
+<div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <form [formGroup]="loginForm">
+            <div class="form-group">
+              <h1 class="text-blue">LOGIN</h1>
+              <input type="number" class="form-control" formControlName="telephone"  placeholder="TELEPHONE">
+            </div>
+            <div *ngIf="loginForm.controls['telephone'].invalid && (loginForm.controls['telephone'].touched ||
+            loginForm.controls['telephone'].dirty)">
+            <div *ngIf="loginForm.controls['telephone'].errors.required" class="red">
+              Telephone is required
+            </div>
+            <div *ngIf="loginForm.controls['telephone'].errors.minlength(8)" class="red">
+             Telephone has been 8 numbers
+            </div>
+           
+
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" formControlName="pwd" placeholder="Password">
+            </div>
+            <div *ngIf="loginForm.controls['pwd'].invalid && (loginForm.controls['pwd'].touched ||
+            loginForm.controls['pwd'].dirty)">
+            <div *ngIf="loginForm.controls['pwd'].errors.required" class="red">
+              password is required
+            </div>
+           
+
+            </div>
+          
+            
+            
+            <div class="form-group">
+              <input type="submit" (click)="login()" class="btn btn-primary py-3 px-5" value="LOGIN">
+            </div>
+            <span>{{errorMsg}}</span>
+          </form>  
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
